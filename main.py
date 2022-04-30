@@ -105,7 +105,7 @@ class Stocks:
         return markup
 
 
-bot = telebot.TeleBot('1615708598:AAGaosG6q23IFDn5ry82DWsT5WUyl5ox1so', threaded=False)
+bot = telebot.TeleBot('{API}', threaded=False)
 stocks = Stocks()
 stop = False
 
@@ -132,9 +132,9 @@ def index(message):
 @bot.message_handler(commands=['pay', 'donat'])
 def pay(message):
     link_pay = types.InlineKeyboardMarkup()
-    link_pay.add(types.InlineKeyboardButton("Юmoney", url="https://yoomoney.ru/to/410015184089148"),
-                 types.InlineKeyboardButton("QIWI", url="https://my.qiwi.com/Nykolai-LGlpwbGwiA"))
-    bot.send_message(message.chat.id, "Карта: <b>5599 0020 0151 5701</b>", parse_mode='html',
+    link_pay.add(types.InlineKeyboardButton("Юmoney", url="{umoney}"),
+                 types.InlineKeyboardButton("QIWI", url="{QIWI}"))
+    bot.send_message(message.chat.id, "Карта: <b>{card_no}</b>", parse_mode='html',
                           reply_markup=link_pay)
     bot.send_message(message.chat.id, "Спасибо!", parse_mode='html')
 
